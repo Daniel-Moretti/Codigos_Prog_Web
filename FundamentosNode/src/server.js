@@ -17,7 +17,7 @@ const server = http.createServer( (request, response) => {
 
     if(method == 'GET' && url == '/users'){
 
-        response
+        return response
         .setHeader('Content-type', 'application/json')
         .end(JSON.stringify(users))
 
@@ -25,18 +25,19 @@ const server = http.createServer( (request, response) => {
 
     if(method == 'POST' && url == '/users'){
 
+        
         users.push(
             {
-                id : 1,
-                nome : "Daniel"
+                id : 2,
+                nome : "Daniel Moretti"
             }
         )
 
-        response.writeHead(201).end("Adicionado com Sucesso");
+        return response.writeHead(201).end("Adicionado com Sucesso");
 
     }
 
-    response.end();
+    return response.writeHead(404).end();
 
 } )
 
